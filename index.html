@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<link rel="stylesheet" type="text/css" href="/morsetutor/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="/morsetutor/css/layout.css">
+	
+	<script type="text/javascript" src="/morsetutor/scripts/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="/morsetutor/scripts/webaudiotools.js"></script>
+	<script type="text/javascript" src="/morsetutor/scripts/script.js"></script>
+	<script type="text/javascript" src="/morsetutor/scripts/tabs.js"></script>
+</head>
+
+<body onload="init()">
+	<div class="container">
+		<div class="header">
+				<h1>Code Coach</h1>
+				<h3>Learn Morse Code</h3>
+		</div>
+	
+		<div class="content">
+		
+			<div id="menu">
+				<ul id="tabs">
+					<li><a href="#home">Morse Code</a></li>
+					<li><a href="#learncharacters">Practice Characters</a></li>
+					<li><a href="#learnwords">Practice Words</a></li>
+					<li><a href="#fourththing">Fourth Thing</a></li>
+				</ul>
+			</div>
+		
+			<div class="tabContent" id="home">
+				Home
+			</div>
+		
+			<div class="tabContent" id="learncharacters">
+				<div id="setupcontrols">
+					<div id="codesettings">
+						<form>
+							<label for="tonefreq">Tone Frequency (Hz)</label>
+							<input type="text" name="tonefreq" id="tonefreq" value ="650"><br>
+										
+							<label for="characterspeed">Character Speed (WPM)</label>
+							<input type="text" name="characterspeed" id="characterspeed" value ="25"><br>
+						
+							<label for="proficiencyspeed">Proficiency Threshold (WPM)</label>
+							<input type="text" name="proficiencyspeed" id="proficiencyspeed" value ="10"><br>
+						</form>
+								
+						<button type="button" id="startcode" onclick="code.startSession()">Start Code</button>
+								
+						<button type="button" id="stopcode" onclick="code.pauseSession()">Stop Code</button>
+					</div>
+					
+					<div id="characterset">
+						<h2 id="letterboxlabel">Select Characters to Drill</h2>
+						<div class="letterbox" id="a">A</div>
+						<div class="letterbox" id="b">B</div>
+						<div class="letterbox" id="c">C</div>
+						<div class="letterbox" id="d">D</div>
+						<div class="letterbox" id="e">E</div> 
+						<div class="letterbox" id="f">F</div>
+						<div class="letterbox" id="g">G</div>
+						<div class="letterbox" id="h">H</div>
+						<div class="letterbox" id="i">I</div> 
+						<div class="letterbox" id="j">J</div>
+						<div class="letterbox" id="k">K</div>
+						<div class="letterbox" id="l">L</div>
+						<div class="letterbox" id="m">M</div> 
+						<br /> 
+						<div class="letterbox" id="n">N</div>
+						<div class="letterbox" id="o">O</div>
+						<div class="letterbox" id="p">P</div>
+						<div class="letterbox" id="q">Q</div> 
+						<div class="letterbox" id="r">R</div>
+						<div class="letterbox" id="s">S</div>
+						<div class="letterbox" id="t">T</div>
+						<div class="letterbox" id="u">U</div> 
+						<div class="letterbox" id="v">V</div>
+						<div class="letterbox" id="w">W</div>
+						<div class="letterbox" id="x">X</div>
+						<div class="letterbox" id="y">Y</div> 
+						<div class="letterbox" id="z">Z</div>
+						<br /> 
+						<div class="letterbox" id="0">0</div>
+						<div class="letterbox" id="1">1</div>
+						<div class="letterbox" id="2">2</div> 
+						<div class="letterbox" id="3">3</div>
+						<div class="letterbox" id="4">4</div>
+						<div class="letterbox" id="5">5</div>
+						<div class="letterbox" id="6">6</div> 
+						<div class="letterbox" id="7">7</div>
+						<div class="letterbox" id="8">8</div>
+						<div class="letterbox" id="9">9</div>
+						<br /> 
+						<div class="letterbox" id=".">.</div>
+						<div class="letterbox" id=",">,</div>
+						<div class="letterbox" id="/">/</div>
+						<div class="letterbox" id="?">?</div> 
+						<div class="letterbox smallfont" id="bk">BK</div>
+						<div class="letterbox smallfont" id="sk">SK</div>
+						<div class="letterbox smallfont" id="ar">AR</div>
+					</div>
+				</div>
+				<div id="userreadout">
+					<div id="speedlabel">
+						Speed: 
+						<div id="speedmeasurement">
+							*
+						</div>
+					</div>
+				</div>
+				<textarea rows="1" cols="2" id="chardisplay" style="text-align: center" readonly="true">*</textarea> <br/>
+			</div>
+			
+			<div class="tabContent" id="learnwords">
+				Learn Words
+				
+				<div id="setupcontrols">
+					<div id="codesettings">
+						<form>
+							<label for="tonefreq">Tone Frequency (Hz)</label>
+							<input type="text" name="tonefreq" id="tonefreq" value ="650"><br>
+										
+							<label for="characterspeed">Character Speed (WPM)</label>
+							<input type="text" name="characterspeed" id="characterspeed" value ="25"><br>
+						
+							<label for="proficiencyspeed">Proficiency Threshold (WPM)</label>
+							<input type="text" name="proficiencyspeed" id="proficiencyspeed" value ="10"><br>
+						</form>
+								
+						<button type="button" id="startcode" onclick="code.startWords()">Start Words</button>
+								
+						<button type="button" id="stopcode" onclick="code.pauseWords()">Stop Words</button>
+					</div>
+				</div>
+				<div id="userreadout">
+					<div id="speedlabel">
+						Speed: 
+						<div id="speedmeasurement">
+							*
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="tabContent" id="fourththing">
+				Fourth Thing
+			</div>
+			
+			
+		</div>
+		
+		<div class="footer">
+			Footer
+		</div>
+	</div>
+</body>  
+
+</html>
